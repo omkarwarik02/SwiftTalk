@@ -1,0 +1,54 @@
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+.nav-container{
+    position: sticky;
+    width: 100%;
+    height: 64px;
+    top:0;
+    
+}
+.app-title{
+    font-family: "Bitcount Prop Single", sans-serif;
+    font-weight:500;
+}
+.body-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  height: 100vh;        
+  width: 80%;
+  margin: 0 auto;
+
+  overflow: hidden;    
+
+  font-family: "Bitcount Prop Single", sans-serif;
+  font-weight: lighter;
+}
+
+
+.footer-toolbar{
+    position: fixed;
+    bottom: 0;
+  width: 100%;
+  height: 56px;
+
+   display: flex;
+  justify-content: center;
+  align-items: center;
+    font-family: "Bitcount Prop Single", sans-serif;
+  font-size: 14px;
+
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+.body{
+    overflow: hidden;
+}

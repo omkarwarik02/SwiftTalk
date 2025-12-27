@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@primeuix/themes": "^2.0.2",
+    "dotenv": "^17.2.3",
+    "primeicons": "^7.0.0",
+    "primeng": "^21.0.1"
+  }
+}

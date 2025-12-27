@@ -1,0 +1,58 @@
+@if (currentUser) {
+
+  <mat-card class="chat-card">
+
+    <mat-card-header>
+      <mat-card-title>Chat</mat-card-title>
+      <mat-card-subtitle>Private conversation</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-divider></mat-divider>
+
+    <mat-card-content class="messages">
+      @for (msg of messages; track msg.id) {
+
+        <div
+          class="message"
+          [class.me]="msg.sender === currentUser.id"
+          [class.rec]="msg.sender !== currentUser.id">
+          <mat-card class="bubble" appearance="outlined">
+            {{ msg.text }}
+          </mat-card>
+
+        </div>
+
+      }
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+    <mat-card-actions class="input-row">
+      <mat-form-field appearance="outline" class="message-input">
+        <input
+          matInput
+          name="message"
+          placeholder="Type a message"
+          [(ngModel)]="messageText"
+          (keyup.enter)="sendMessage()" />
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="sendMessage()">
+        <mat-icon>send</mat-icon>
+      </button>
+    </mat-card-actions>
+
+  </mat-card>
+
+} @else {
+
+  <mat-card>
+    <mat-card-content>
+      Loading chat...
+    </mat-card-content>
+  </mat-card>
+
+}

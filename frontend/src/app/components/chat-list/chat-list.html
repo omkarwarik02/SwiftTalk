@@ -1,0 +1,32 @@
+<div style="padding: 20px; color: black">
+<div class="header-text">
+    <h2>Chat List</h2>
+</div>
+
+
+  @if (loading) {
+    <p>Loading...</p>
+  }
+
+  @if (!loading && users.length === 0) {
+    <div>No users found</div>
+  }
+
+  @if (users.length > 0) {
+    
+      @for (user of users; track user.id) {
+        
+         <mat-card class="username" (click)="openChat(user.id)">
+          
+          <mat-card-title class="names">
+            {{ user.name }}
+         
+       
+          </mat-card-title>
+           </mat-card> 
+        
+      }
+    
+  }
+
+</div>

@@ -1,0 +1,12 @@
+<app-navbar></app-navbar>
+@if ((authState.loading$ | async) === true && (authState.user$ | async) === null) {
+  <div class="center-screen">
+    <mat-spinner></mat-spinner>
+
+  </div>
+} @else {
+  <router-outlet />
+}
+
+
+

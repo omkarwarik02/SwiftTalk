@@ -1,0 +1,36 @@
+<div class="center-container">
+    <mat-card class="Reg-card">
+    <h2 class="title">Register</h2>
+
+    <form [formGroup]="registerForm" (ngSubmit)="submit()">
+         <mat-form-field appearance="outline" class="full">
+            <mat-label>Username</mat-label>
+            <input matInput type="email" formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email">
+        </mat-form-field>
+
+
+         <mat-form-field appearance="outline" class="full">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password">
+
+        </mat-form-field>
+        <div class="btn">
+                  <button matFab extended class="reg-btn" type="submit"> Register
+      </button>
+        </div>
+    
+
+</form>
+<p class="small">
+   I have an account?
+    <a routerLink="/login">Login</a>
+</p>
+    </mat-card>
+
+
+</div>

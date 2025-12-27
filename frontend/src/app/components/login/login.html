@@ -1,0 +1,43 @@
+<div class="center-container">
+    <mat-card class="Login-card">
+    <h2 class="title">Login</h2>
+
+    <form [formGroup]="loginForm" (ngSubmit)="submit()">
+        <mat-form-field appearance="outline" class="full">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email">
+        </mat-form-field>
+
+
+         <mat-form-field appearance="outline" class="full">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password">
+
+        </mat-form-field>
+        <div class="btn">
+        <button 
+  mat-raised-button 
+  color="primary" 
+  class="full"
+  [disabled]="loginForm.invalid || loading">
+
+  @if (!loading) {
+    Login
+  } @else {
+    <mat-spinner diameter="24" strokeWidth="3"></mat-spinner>
+  }
+
+</button>
+
+        </div>
+    
+
+</form>
+<p class="small">
+    Don't have an account?
+    <a routerLink="/register">Register</a>
+</p>
+    </mat-card>
+
+
+</div>
