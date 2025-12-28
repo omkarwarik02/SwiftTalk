@@ -17,6 +17,7 @@ import { MatDividerModule } from '@angular/material/divider';
 
 import { AuthState } from '../../store/auth-state';
 import { SocketService } from '../../services/socket.service';
+import { User } from '../../models/user';
 
 const USERS_QUERY = gql`
   query {
@@ -43,7 +44,7 @@ const USERS_QUERY = gql`
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChatList implements OnInit, OnDestroy {
-  users: any[] = [];
+  users: User[] = [];
   onlineUsers = new Set<string>();
   loading = true;
 
@@ -58,6 +59,7 @@ export class ChatList implements OnInit, OnDestroy {
   private cd = inject(ChangeDetectorRef);
 
 ngOnInit() {
+
   console.log('🔥 ChatList component CREATED');
 
   this.loadUsers(); // ✅ ALWAYS LOAD USERS
@@ -99,7 +101,10 @@ ngOnInit() {
   })
   .valueChanges.subscribe((res: any) => {
 
-    this.users = res.data?.users ?? [];
+  this.users = (res.data?.users ?? []).filter(
+  (u: User) => u.id !== this.authState.user?.id
+);
+
     this.loading = false;
     this.cd.markForCheck();
   });

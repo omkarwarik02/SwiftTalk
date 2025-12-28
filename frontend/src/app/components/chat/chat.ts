@@ -91,7 +91,7 @@ ngOnInit() {
       const newReceiverId = params.get('id');
       if (!newReceiverId) return;
 
-      // 🔥 ONLY compare after both values exist
+      // ONLY compare after both values exist
       if (newReceiverId === user.id) {
         console.warn('Self chat blocked');
         this.router.navigate(['/chat-list']);
