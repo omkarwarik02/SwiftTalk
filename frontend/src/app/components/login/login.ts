@@ -14,6 +14,7 @@ import { Auth } from '../../services/auth';
 import { AuthState } from '../../store/auth-state';
 import { NgIf } from "../../../../node_modules/@angular/common/types/_common_module-chunk";
 import { SocketService } from '../../services/socket.service';
+import { Message } from '../../services/message';
 
 
 @Component({
@@ -41,7 +42,9 @@ private fb = inject(FormBuilder);
 private auth = inject(Auth)
 private router = inject(Router)
 private authState = inject(AuthState);
-private socketService = inject(SocketService)
+private socketService = inject(SocketService);
+private msg = inject(Message);
+
 loading = false
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -56,6 +59,7 @@ loading = false
 
    this.auth.login(email!, password!).subscribe({
     next:(res:any)=> {
+      this.msg.success('Login Successful');
       this.loading = false;
       const user = res.data?.login?.user;
       console.log('Login succss:', res)

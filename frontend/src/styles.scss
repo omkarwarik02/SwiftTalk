@@ -36,3 +36,17 @@ body {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.success-snackbar {
+  background: #2e7d32;
+  color: white;
+}
+
+.error-snackbar {
+  background: #d32f2f;
+  color: white;
+}
+
+.info-snackbar {
+  background: #1976d2;
+  color: white;
+}
