@@ -12,6 +12,7 @@ import { RouterLink } from "@angular/router";
 import { Auth } from '../../services/auth';
 import { Router } from '@angular/router';
 import { AuthState } from '../../store/auth-state';
+import { Message } from '../../services/message';
 
 
 @Component({
@@ -31,7 +32,8 @@ export class Register {
 private fb = inject(FormBuilder);
 private auth = inject(Auth)
 private router =inject(Router);
-private authState = inject(AuthState)
+private authState = inject(AuthState);
+private msg = inject(Message);
   registerForm = this.fb.group({
     name:[''],
     email: ['', [Validators.required, Validators.email]],
@@ -48,11 +50,15 @@ submit() {
     const user = res.data?.registerUser?.user;
 
     if (user) {
+      this.msg.success('Registered Successfully')
       this.authState.setUser(user);
       this.router.navigate(['/login']);
     }
   },
-  error: (err) => console.log('Registration failed:', err)
+  error: (err) => {
+    this.msg.error('Registration Failed');
+    console.log('Registration failed:', err)
+  }
 });
 
 }
